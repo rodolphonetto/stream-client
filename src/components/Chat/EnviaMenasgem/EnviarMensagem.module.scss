@@ -1,0 +1,27 @@
+.formulario {
+  height: 20vh;
+  padding: 20px;
+}
+
+.caixaTexto {
+  width: 100%;
+  padding: 10px;
+}
+
+.enviar {
+  width: 80%;
+  text-align: center;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 10px;
+  padding: 10px;
+  background: none;
+  border: 1px solid black;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.enviar:hover {
+  background-color: black;
+  color: white;
+}
