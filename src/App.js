@@ -1,17 +1,17 @@
-import React, { Component } from "react";
+import React from 'react'
 
-import Video from "./components/Video/Video";
-import Chat from "./components/Chat/Chat"
+import Video from './components/Video/Video'
+import Chat from './components/Chat/Chat'
 
-import style from "./App.module.scss";
+import style from './App.module.scss'
 
-export default class App extends Component {
-  render() {
-    return (
-      <div className={style.principal}>
-        <Video />
-        <Chat />
-      </div>
-    );
-  }
+const App = props => {
+  return (
+    <div className={style.principal}>
+      <Video />
+      <Chat />
+    </div>
+  )
 }
+
+export default App
