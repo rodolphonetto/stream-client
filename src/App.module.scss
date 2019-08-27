@@ -1,4 +1,6 @@
 .main {
+  height: 100vh;
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(16, 1fr);
+  grid-template-rows: min-content 1fr 80px;
 }

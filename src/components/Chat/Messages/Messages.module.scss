@@ -1,7 +1,8 @@
 .messagesList {
+  height: 68vh;
   list-style: none;
-  height: 80vh;
-  overflow: scroll;
+  overflow-y: scroll;
+  border-bottom: 1px solid black;
 }
 
 .messageBox {
@@ -16,6 +17,7 @@
 }
 
 .user {
+  align-self: center;
   grid-column: 1 / 3;
   margin-right: 0px;
   font-weight: bold;
@@ -26,5 +28,5 @@
 }
 
 .messageBox:nth-child(even) {
-  background: rgb(238, 238, 238);
+  background: rgba(247, 245, 245, 0.637);
 }

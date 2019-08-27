@@ -1,5 +1,7 @@
 .chat {
+  height: 80vh;
   display: flex;
   flex-direction: column;
-  grid-column: 10 / 13;
+  grid-column: 14 / 17;
+  grid-row: 2 / 3;
 }
