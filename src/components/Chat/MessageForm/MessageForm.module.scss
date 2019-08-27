@@ -1,14 +1,14 @@
-.formulario {
+.form {
   height: 20vh;
   padding: 20px;
 }
 
-.caixaTexto {
+.textBox {
   width: 100%;
   padding: 10px;
 }
 
-.enviar {
+.send {
   width: 80%;
   text-align: center;
   margin-left: 10%;
@@ -21,7 +21,7 @@
   transition: 0.3s;
 }
 
-.enviar:hover {
+.send:hover {
   background-color: black;
   color: white;
 }

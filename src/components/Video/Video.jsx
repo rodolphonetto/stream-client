@@ -1,7 +1,8 @@
-import React, { Component } from "react";
+/* eslint-disable semi */
+import React, { Component } from 'react';
 // import flvjs from "flv.js";
 
-import style from "./video.module.scss";
+import style from './video.module.scss';
 
 class Video extends Component {
   // componentDidMount() {
@@ -17,10 +18,9 @@ class Video extends Component {
   //   }
   // }
 
-  render() {
+  render () {
     return (
-      <div className={style.fundoVideo}>
-      </div>
+      <div className={style.videoBackground} />
       // <video
       //   className={style.video}
       //   id="videoElement"

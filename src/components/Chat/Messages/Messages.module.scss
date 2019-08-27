@@ -1,0 +1,30 @@
+.messagesList {
+  list-style: none;
+  height: 80vh;
+  overflow: scroll;
+}
+
+.messageBox {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+}
+
+.user,
+.message {
+  margin: 10px;
+  font-size: 12px;
+}
+
+.user {
+  grid-column: 1 / 3;
+  margin-right: 0px;
+  font-weight: bold;
+}
+
+.message {
+  grid-column: 3 / 9; 
+}
+
+.messageBox:nth-child(even) {
+  background: rgb(238, 238, 238);
+}

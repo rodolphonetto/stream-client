@@ -7,7 +7,7 @@ import style from './App.module.scss'
 
 const App = props => {
   return (
-    <div className={style.principal}>
+    <div className={style.main}>
       <Video />
       <Chat />
     </div>

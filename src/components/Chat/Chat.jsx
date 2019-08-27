@@ -1,53 +1,43 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import style from './Chat.module.scss'
 
 import socketIOClient from 'socket.io-client'
 
-import Mensagens from './Mensagens/Mensagens'
-import EnviaMensagem from './EnviaMenasgem/EnviarMensagem'
+import ChatTitle from './ChatTitle/ChatTitle'
+import Messages from './Messages/Messages'
+import MessageBox from './MessageForm/MessageForm'
 
-export default class Chat extends Component {
-  state = {
-    endpoint: 'localhost:4000',
-    mensagem: '',
-    mensagens: []
+const Chat = props => {
+  const [message, setMessage] = useState('')
+
+  const [messages, setMessages] = useState([])
+
+  const handleKeyPressed = event => {
+    if (event.key === 'Enter') {
+      handleSubmit(event)
+    }
   }
 
-  componentDidMount () {
-    const socket = socketIOClient(this.state.endpoint)
-    socket.on('mensagem', msg => {
-      const newMensagens = [...this.state.mensagens, msg]
-      this.setState({
-        mensagens: newMensagens
-      })
-    })
-  }
-
-  handleChange = event => {
-    this.setState({
-      mensagem: event.target.value
-    })
-  }
-
-  handleSubmit = event => {
+  const handleSubmit = event => {
     event.preventDefault()
-    const socket = socketIOClient(this.state.endpoint)
-    socket.emit('mensagem', this.state.mensagem, 'Administrador')
-    this.setState({
-      mensagem: ''
-    })
+    const socket = socketIOClient('localhost:4000')
+    socket.emit('mensagem', messages, 'Administrador')
+    setMessages(oldMessages => [...oldMessages, message])
+    setMessage('')
   }
 
-  render () {
-    return (
-      <div className={style.chat}>
-        <Mensagens mensagens={this.state.mensagens} />
-        <EnviaMensagem
-          mensagem={this.state.mensagem}
-          onChange={e => this.handleChange(e)}
-          onSubmit={this.handleSubmit}
-        />
-      </div>
-    )
-  }
+  return (
+    <div className={style.chat}>
+      <ChatTitle title='Tire suas dúvidas no chat' />
+      <Messages messages={messages} />
+      <MessageBox
+        mensagem={message}
+        onChange={e => setMessage(e.target.value)}
+        onKeyPressed={handleKeyPressed}
+        onSubmit={handleSubmit}
+      />
+    </div>
+  )
 }
+
+export default Chat
