@@ -8,6 +8,7 @@ const MessageForm = props => {
     <div className={style.form}>
       <form onSubmit={props.onSubmit}>
         <textarea
+          name='m'
           rows='1'
           placeholder='Envie suas dúvidas'
           className={style.textBox}
