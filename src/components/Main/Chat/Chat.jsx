@@ -8,17 +8,21 @@ import ChatTitle from './ChatTitle/ChatTitle'
 import Messages from './Messages/Messages'
 import MessageBox from './MessageForm/MessageForm'
 
+const socket = socketIOClient('localhost:4000')
+
 const Chat = props => {
   const [message, setMessage] = useState('')
 
   const [messages, setMessages] = useState([])
 
-  const getMessages = async () => {
+  const addMessage = async message => {
     try {
       const response = await axios.post(
-        'http://localhost:4000/messages/add-message/'
+        'http://localhost:4000/messages/add-message/',
+        {
+          message: message
+        }
       )
-      console.log(response.data)
     } catch (error) {
       console.error(error)
     }
@@ -32,12 +36,14 @@ const Chat = props => {
 
   const handleSubmit = event => {
     event.preventDefault()
-    getMessages()
-    const socket = socketIOClient('localhost:4000')
-    socket.emit('mensagem', messages, 'Administrador')
-    setMessages(oldMessages => [...oldMessages, message])
-    setMessage('')
+    socket.emit('mensagem', message)
   }
+
+  socket.on('mensagem', msg => {
+    addMessage(message)
+    setMessages(oldMessages => [...oldMessages, msg])
+    setMessage('')
+  })
 
   return (
     <div className={style.chat}>
