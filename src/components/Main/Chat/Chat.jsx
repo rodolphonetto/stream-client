@@ -1,28 +1,29 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import style from './Chat.module.scss'
 
-import socketIOClient from 'socket.io-client'
+import openSocket from 'socket.io-client'
 import axios from 'axios'
 
 import ChatTitle from './ChatTitle/ChatTitle'
 import Messages from './Messages/Messages'
 import MessageBox from './MessageForm/MessageForm'
 
-const socket = socketIOClient('localhost:4000')
-
 const Chat = props => {
   const [message, setMessage] = useState('')
-
   const [messages, setMessages] = useState([])
+
+  useEffect(() => {
+    const socket = openSocket('http://localhost:4000')
+    socket.on('message', message => {
+      setMessages(oldMessages => [...oldMessages, message])
+    })
+  }, [])
 
   const addMessage = async message => {
     try {
-      const response = await axios.post(
-        'http://localhost:4000/messages/add-message/',
-        {
-          message: message
-        }
-      )
+      await axios.post('http://localhost:4000/messages/add-message/', {
+        message: message
+      })
     } catch (error) {
       console.error(error)
     }
@@ -36,14 +37,8 @@ const Chat = props => {
 
   const handleSubmit = event => {
     event.preventDefault()
-    socket.emit('mensagem', message)
-  }
-
-  socket.on('mensagem', msg => {
     addMessage(message)
-    setMessages(oldMessages => [...oldMessages, msg])
-    setMessage('')
-  })
+  }
 
   return (
     <div className={style.chat}>
