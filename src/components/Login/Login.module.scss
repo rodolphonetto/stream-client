@@ -8,21 +8,48 @@
   font-size: 1.6rem;
 }
 
-.bemVindo {
-  justify-self: flex-start;
-}
-
 .loginBox {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 4rem 1fr;
+  justify-items: center;
+  align-items: center;
   width: 50rem;
   height: 25rem;
   background: white;
+}
+
+.bemVindo {
+  background: lightblue;
+  width: 100%;
+  height: 100%;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.labelNome {
-  background: red;
-  justify-self: flex-start;
+.formBox {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 2rem;
+  grid-row-gap: 6rem;
+  align-items: center;
+}
+
+.labelName {
+  justify-self: end;
+  font-weight: bold;
+}
+
+.inputName {
+  width: 20rem;
+  padding: 1.2rem 1rem;
+}
+
+.btn {
+  grid-column: 1 / -1;
+  margin: 0 15rem;
+  padding: 2rem 0;
+  border: none;
+  background: lightgray;
 }

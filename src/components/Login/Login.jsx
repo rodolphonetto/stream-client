@@ -6,10 +6,12 @@ const Login = () => {
   return (
     <div className={style.Login}>
       <main className={style.loginBox}>
-        <h4 className={style.bemVindo}>Seja Bem Vindo</h4>
-        <form action='#'>
-          <label className={style.labelNome} htmlFor='name'>
-            Digite seu nome
+        <div className={style.bemVindo}>
+          <h4>Seja Bem Vindo</h4>
+        </div>
+        <form className={style.formBox} action='#'>
+          <label className={style.labelName} htmlFor='name'>
+            Digite seu nome:
           </label>
           <input
             className={style.inputName}
@@ -17,6 +19,9 @@ const Login = () => {
             name='name'
             type='text'
           />
+          <button className={style.btn} type='submit'>
+            Entrar
+          </button>
         </form>
       </main>
     </div>
