@@ -1,0 +1,28 @@
+.Login {
+  background: lightgrey;
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.6rem;
+}
+
+.bemVindo {
+  justify-self: flex-start;
+}
+
+.loginBox {
+  display: flex;
+  flex-direction: column;
+  width: 50rem;
+  height: 25rem;
+  background: white;
+  justify-content: center;
+  align-items: center;
+}
+
+.labelNome {
+  background: red;
+  justify-self: flex-start;
+}
